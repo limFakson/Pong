@@ -1,25 +1,10 @@
 import kivy
 from kivy.app import App
-from kivy.uix.label import Label
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.widget import Widget
-from kivy.properties import ObjectProperty, NumericProperty
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-
-class MyGrid(Widget):
-    name = ObjectProperty(None)
-    email = ObjectProperty(None)
-    
-    def btn(self):
-        print("Name: ", self.name.text, "Email: ", self.email.text)
-        self.name.text = ""
-        self.email.text = ""
-        
+from kivy.uix.widget import Widget       
         
 class MyApp(App):
     def build(self):
-        return MyGrid()      
+        return    
         
 
 if __name__ == '__main__':

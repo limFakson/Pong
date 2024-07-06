@@ -1,4 +1,4 @@
-
+<#1>
 class MyGrid(GridLayout):
     def __init__(self, **kwargs):
         super(MyGrid, self).__init__(**kwargs)
@@ -41,3 +41,56 @@ class MyApp(App):
 
 if __name__ == '__main__':
     MyApp().run()
+
+<#2>
+class MyGrid(Widget):
+    name = ObjectProperty(None)
+    email = ObjectProperty(None)
+    
+    def btn(self):
+        print("Name: ", self.name.text, "Email: ", self.email.text)
+        self.name.text = ""
+        self.email.text = ""
+        
+        
+class MyApp(App):
+    def build(self):
+        return MyGrid()      
+        
+
+if __name__ == '__main__':
+    MyApp().run()
+<#2.kv>
+<MyGrid>
+    name: name
+    email: email
+
+    GridLayout:
+        cols:1
+        size: root.width -200, root.height -200
+        pos: 100, 100
+
+        GridLayout:
+            cols: 2
+
+            Label: 
+                id: Lname
+                text: "Name"
+
+            TextInput:
+                id: name
+                mutiline: False
+            
+            Label:
+                id: Lemail
+                text: "Email"
+
+            TextInput:
+                id: email
+                mutiline: False
+        
+        Button:
+            text: "Submit"
+            on_press: root.btn()
+
+ 
