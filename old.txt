@@ -93,4 +93,49 @@ if __name__ == '__main__':
             text: "Submit"
             on_press: root.btn()
 
- 
+
+<#3>
+import kivy
+from kivy.app import App
+from kivy.uix.widget import Widget  
+from kivy.graphics import Rectangle
+from kivy.graphics import Color     
+
+class Touch(Widget):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        
+        with self.canvas:
+            Color(1, 0, 0, 1, mode='rgba')
+            self.rect = Rectangle(pos=(50,50), size=(50,50))
+            Color(0,0,1,1, mode='rgba')
+            self.gre = Rectangle(pos=(32,32), size=(50,50))
+            if self.rect.pos == self.gre.pos:
+                Color(1, 0, 0, .5, mode='rgba')
+                self.ran = Rectangle(pos=(0,600), size=(50,50))
+            
+                self.rect = self.ran
+    
+    def on_touch_down(self, touch):
+        # self.rect.pos = touch.pos
+        self.gre.pos = touch.pos
+        print("Mouse down", touch)
+        return super().on_touch_down(touch)
+    
+    def on_touch_move(self, touch):
+        # self.rect.pos = touch.pos
+        self.gre.pos = touch.pos
+        print("Mouse move", touch)
+        return super().on_touch_move(touch)
+    
+    def on_touch_up(self, touch):
+        print("Mouse up", touch)
+        return super().on_touch_up(touch)
+        
+class MyApp(App):
+    def build(self):
+        return Touch()
+        
+
+if __name__ == '__main__':
+    MyApp().run()
